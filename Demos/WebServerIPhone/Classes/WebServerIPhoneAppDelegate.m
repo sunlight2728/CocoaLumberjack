@@ -1,3 +1,10 @@
+//
+//  WebServerIPhoneAppDelegate.m
+//  WebServerIPhone
+//
+//  CocoaLumberjack Demos
+//
+
 #import "WebServerIPhoneAppDelegate.h"
 #import "WebServerIPhoneViewController.h"
 
@@ -9,14 +16,12 @@
 // Log levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
-
 @implementation WebServerIPhoneAppDelegate
 
 @synthesize fileLogger;
 
 @synthesize window;
 @synthesize viewController;
-
 
 - (void)setupWebServer
 {
@@ -100,7 +105,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
                                    userInfo:nil
                                     repeats:YES];
     
-    [window addSubview:viewController.view];
+    [window setRootViewController:viewController];
     [window makeKeyAndVisible];
 }
 

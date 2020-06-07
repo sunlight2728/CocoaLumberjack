@@ -1,12 +1,16 @@
+//
+//  FineGrainedLoggingAppDelegate.m
+//  FineGrainedLogging
+//
+//  CocoaLumberjack Demos
+//
+
 #import "FineGrainedLoggingAppDelegate.h"
 
 #import "MYLog.h"
 
 #import "TimerOne.h"
 #import "TimerTwo.h"
-
-// Debug levels: off, error, warn, info, verbose
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 @implementation FineGrainedLoggingAppDelegate
 

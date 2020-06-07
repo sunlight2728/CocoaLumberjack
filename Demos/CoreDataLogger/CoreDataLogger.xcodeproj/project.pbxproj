@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C2EF26CA49246A98E4F5CD7 /* libPods-CDL_osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC7A9B6117D4036860BA066 /* libPods-CDL_osx.a */; };
+		0A7D8FA4217A10B100B496D7 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7D8FA3217A10B100B496D7 /* CocoaLumberjack.framework */; };
 		DCE86C0E1343C419004FD85F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE86C0D1343C419004FD85F /* Cocoa.framework */; };
 		DCE86C181343C419004FD85F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCE86C161343C419004FD85F /* InfoPlist.strings */; };
 		DCE86C1B1343C419004FD85F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE86C1A1343C419004FD85F /* main.m */; };
@@ -20,8 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6EC7A9B6117D4036860BA066 /* libPods-CDL_osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDL_osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3C9FD7691469B5A00AA4E31 /* Pods-CDL_osx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDL_osx.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDL_osx/Pods-CDL_osx.release.xcconfig"; sourceTree = "<group>"; };
+		0A7D8FA3217A10B100B496D7 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43AF80312174E4C300C0D9DC /* Module-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Module-Release.xcconfig"; sourceTree = "<group>"; };
+		43AF80322174E4C300C0D9DC /* Module-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Module-Debug.xcconfig"; sourceTree = "<group>"; };
+		43AF80332174E4C300C0D9DC /* Module-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Module-Shared.xcconfig"; sourceTree = "<group>"; };
 		DCE86C091343C419004FD85F /* CoreDataLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE86C0D1343C419004FD85F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DCE86C101343C419004FD85F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -40,7 +42,6 @@
 		DCE86C521343C64F004FD85F /* CocoaBotLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CocoaBotLog.xcdatamodel; sourceTree = "<group>"; };
 		DCE86C531343C64F004FD85F /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntry.h; path = CoreDataLogger/LogEntry.h; sourceTree = "<group>"; };
 		DCE86C541343C64F004FD85F /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntry.m; path = CoreDataLogger/LogEntry.m; sourceTree = "<group>"; };
-		EF6DC9F7EE93E86604607432 /* Pods-CDL_osx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDL_osx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDL_osx/Pods-CDL_osx.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,31 +49,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7D8FA4217A10B100B496D7 /* CocoaLumberjack.framework in Frameworks */,
 				DCE86C0E1343C419004FD85F /* Cocoa.framework in Frameworks */,
-				1C2EF26CA49246A98E4F5CD7 /* libPods-CDL_osx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		029654B0E34E31A09088B9E8 /* Pods */ = {
+		43AF80302174E4C300C0D9DC /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				EF6DC9F7EE93E86604607432 /* Pods-CDL_osx.debug.xcconfig */,
-				A3C9FD7691469B5A00AA4E31 /* Pods-CDL_osx.release.xcconfig */,
+				43AF80312174E4C300C0D9DC /* Module-Release.xcconfig */,
+				43AF80322174E4C300C0D9DC /* Module-Debug.xcconfig */,
+				43AF80332174E4C300C0D9DC /* Module-Shared.xcconfig */,
 			);
-			name = Pods;
+			name = Configs;
+			path = ../../Configs;
 			sourceTree = "<group>";
 		};
 		DCE86BFE1343C419004FD85F = {
 			isa = PBXGroup;
 			children = (
+				43AF80302174E4C300C0D9DC /* Configs */,
 				DCE86C351343C432004FD85F /* Logging */,
 				DCE86C131343C419004FD85F /* CoreDataLogger */,
 				DCE86C0C1343C419004FD85F /* Frameworks */,
 				DCE86C0A1343C419004FD85F /* Products */,
-				029654B0E34E31A09088B9E8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,9 +90,9 @@
 		DCE86C0C1343C419004FD85F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7D8FA3217A10B100B496D7 /* CocoaLumberjack.framework */,
 				DCE86C0D1343C419004FD85F /* Cocoa.framework */,
 				DCE86C0F1343C419004FD85F /* Other Frameworks */,
-				6EC7A9B6117D4036860BA066 /* libPods-CDL_osx.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,11 +157,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCE86C2A1343C41A004FD85F /* Build configuration list for PBXNativeTarget "CoreDataLogger" */;
 			buildPhases = (
-				8CCA0EBBED064C809FFE26DE /* Check Pods Manifest.lock */,
 				DCE86C051343C419004FD85F /* Sources */,
 				DCE86C061343C419004FD85F /* Frameworks */,
 				DCE86C071343C419004FD85F /* Resources */,
-				9F7D57202A9B442FA2531632 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -175,7 +176,7 @@
 		DCE86C001343C419004FD85F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = DCE86C031343C419004FD85F /* Build configuration list for PBXProject "CoreDataLogger" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -206,39 +207,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8CCA0EBBED064C809FFE26DE /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9F7D57202A9B442FA2531632 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDL_osx/Pods-CDL_osx-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCE86C051343C419004FD85F /* Sources */ = {
@@ -285,88 +253,40 @@
 /* Begin XCBuildConfiguration section */
 		DCE86C281343C41A004FD85F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43AF80322174E4C300C0D9DC /* Module-Debug.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		DCE86C291343C41A004FD85F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43AF80312174E4C300C0D9DC /* Module-Release.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		DCE86C2B1343C41A004FD85F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF6DC9F7EE93E86604607432 /* Pods-CDL_osx.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataLogger/CoreDataLogger-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataLogger/CoreDataLogger-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				TARGETED_DEVICE_FAMILY = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		DCE86C2C1343C41A004FD85F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3C9FD7691469B5A00AA4E31 /* Pods-CDL_osx.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataLogger/CoreDataLogger-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataLogger/CoreDataLogger-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				TARGETED_DEVICE_FAMILY = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

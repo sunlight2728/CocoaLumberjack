@@ -2,7 +2,7 @@
 //  UniversalAppAppDelegate.m
 //  UniversalApp
 //
-//  Created by Robbie Hanson on 7/1/10.
+//  CocoaLumberjack Demos
 //
 
 #import "UniversalAppAppDelegate.h"
@@ -27,7 +27,7 @@
     // Override point for customization after application launch.
     
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
+    window.rootViewController = viewController;
     [window makeKeyAndVisible];
     
     return YES;
