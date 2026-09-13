@@ -7,14 +7,14 @@ When you think about it, there are two components of file logging. One component
 The `DDFileLogger` implementation, as you may now have guessed, is split into two components. `DDFileLogger` is the component that writes the log messages to the file. And `DDLogFileManager` is a protocol for managing log files, and deciding what to do with them after they've been rolled.
 
 There are two ways to initialize a `DDFileLogger` instance:
-```objective-c
+```objc
 @interface DDFileLogger : NSObject <DDLogger>
-...
+/* ... */
 
-- (instancetype)init;
 - (instancetype)initWithLogFileManager:(id <DDLogFileManager>)logFileManager NS_DESIGNATED_INITIALIZER;
+- (instancetype)init;
 
-...
+/* ... */
 @end
 ```
 
@@ -25,7 +25,7 @@ The alternative init method allows you to pass an instance of your own custom lo
 ### Log File Manager
 
 Let's take a look at the DDLogFileManager protocol:
-```objective-c
+```objc
 @protocol DDLogFileManager <NSObject>
 @required
 
@@ -37,30 +37,27 @@ Let's take a look at the DDLogFileManager protocol:
 
 - (NSString *)logsDirectory;
 
-- (NSArray *)unsortedLogFilePaths;
-- (NSArray *)unsortedLogFileNames;
-- (NSArray *)unsortedLogFileInfos;
+@property (nonatomic, readonly, strong) NSArray<NSString *> *unsortedLogFilePaths;
+@property (nonatomic, readonly, strong) NSArray<NSString *> *unsortedLogFileNames;
+@property (nonatomic, readonly, strong) NSArray<DDLogFileInfo *> *unsortedLogFileInfos;
 
-- (NSArray *)sortedLogFilePaths;
-- (NSArray *)sortedLogFileNames;
-- (NSArray *)sortedLogFileInfos;
+@property (nonatomic, readonly, strong) NSArray<NSString *> *sortedLogFilePaths;
+@property (nonatomic, readonly, strong) NSArray<NSString *> *sortedLogFileNames;
+@property (nonatomic, readonly, strong) NSArray<DDLogFileInfo *> *sortedLogFileInfos;
 
 // Private methods (only to be used by DDFileLogger)
 
-- (NSString *)createNewLogFile;
+- (nullable NSString *)createNewLogFileWithError(NSError **)error;
 
 @optional
 
 // Notifications from DDFileLogger
 
-- (void)didArchiveLogFile:(NSString *)logFilePath;
-- (void)didRollAndArchiveLogFile:(NSString *)logFilePath;
+- (void)didArchiveLogFile:(NSString *)logFilePath wasRolled:(BOOL)wasRolled;
 
 @end
 ```
 
-There are methods to get the logs directory, and various methods to get the list of log files. Then there is a method to create a new log file (that returns the new log file path). And lastly, there are hooks from `DDFileLogger` to be notified of when a log file is rolled.
-
-The hooks are designed to allow you do something with those archived log files!
+There are methods to get the logs directory, and various methods to get the list of log files. Then there is a method to create a new log file (that returns the new log file path). And lastly, there is a hook from `DDFileLogger` to be notified of when a log file is rolled. This hook is designed to allow you do something with those archived log files!
 
 The framework comes with a sample Xcode project that demonstrates compressing archived log files to save disk space. (It performs the compression using gzip.) The Xcode project name is `LogFileCompressor`. The `CompressingLogFileManager` class is ready to be used in your project, or you can use it as a template, or simply learn from it so you can do your own custom log file management.

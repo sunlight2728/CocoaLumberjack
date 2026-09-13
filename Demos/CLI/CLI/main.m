@@ -2,7 +2,7 @@
 //  main.m
 //  CLI
 //
-//  Created by Ernesto Rivera on 2013/12/19.
+//  CocoaLumberjack Demos
 //
 
 #import <Foundation/Foundation.h>
@@ -10,10 +10,9 @@
 
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
-int main(int argc, const char * argv[])
+int main(__unused int argc, __unused const char * argv[])
 {
     @autoreleasepool {
-        
         // Test
         DDTTYLogger * logger = [DDTTYLogger sharedInstance];
         logger.colorsEnabled = YES;
@@ -28,4 +27,3 @@ int main(int argc, const char * argv[])
     }
     return 0;
 }
-

@@ -1,6 +1,15 @@
+//
+//  AppDelegate.m
+//  TextXcodeColors
+//
+//  CocoaLumberjack Demos
+//
+
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+
+#define DDPseudoLocalizedString(text) NSLocalizedString(text, text)
 
 // Log levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -20,7 +29,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 {
     // Standard lumberjack initialization
     
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     
     // And we're going to enable colors
     
@@ -33,7 +42,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     DDLogError(@"Paper jam");
     DDLogWarn(@"Toner is low");
     DDLogInfo(@"Warming up printer (pre-customization)");
-    DDLogVerbose(@"Intializing protcol x26 (pre-customization)");
+    DDLogVerbose(@"Initializing protocol x26 (pre-customization)");
     
     // Now let's do some customization:
     // Info  : Pink
@@ -58,7 +67,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     
     [[DDTTYLogger sharedInstance] setForegroundColor:gray backgroundColor:nil forFlag:DDLogFlagVerbose];
     
-    DDLogVerbose(@"Intializing protcol x26 (post-customization)");
+    DDLogVerbose(@"Initializing protocol x26 (post-customization)");
     
     // Now let's get crazy
     
@@ -73,20 +82,20 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     
     // Update label for better understanding.
     // 
-    // Be sure to follow the instructions for seting up XcodeColors here:
+    // Be sure to follow the instructions for setting up XcodeColors here:
     // https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/XcodeColors
     
     char *xcode_colors = getenv("XcodeColors");
     if (xcode_colors)
     {
         if (strcmp(xcode_colors, "YES") == 0)
-            viewController.label.text = @"XcodeColors enabled";
+            viewController.label.text = DDPseudoLocalizedString(@"XcodeColors enabled");
         else
-            viewController.label.text = @"XcodeColors disabled";
+            viewController.label.text = DDPseudoLocalizedString(@"XcodeColors disabled");
     }
     else
     {
-        viewController.label.text = @"XcodeColors not detected";
+        viewController.label.text = DDPseudoLocalizedString(@"XcodeColors not detected");
     }
     
     return YES;
@@ -95,7 +104,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Lumberjack is extermely flexible.
+ * Lumberjack is extremely flexible.
  * 
  * Below we're going to make a straight NSLog replacement that prints in color.
  * We're also going to demonstrate that log levels are not a requirement to use Lumberjack.

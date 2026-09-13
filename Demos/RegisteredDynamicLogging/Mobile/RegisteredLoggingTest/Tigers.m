@@ -1,13 +1,19 @@
+//
+//  Tigers.m
+//  RegisteredLoggingTest
+//
+//  CocoaLumberjack Demos
+//
+
 #import "Tigers.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 // Log levels: off, error, warn, info, verbose
 static DDLogLevel ddLogLevel = DDLogLevelWarning;
 
-
 @implementation Tigers
 
-+ (int)ddLogLevel
++ (NSUInteger)ddLogLevel
 {
     return ddLogLevel;
 }

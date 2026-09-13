@@ -1,9 +1,15 @@
+//
+//  AppDelegate.m
+//  NonArcTest
+//
+//  CocoaLumberjack Demos
+//
+
 #import "AppDelegate.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 // Log levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-
 
 @implementation AppDelegate
 
@@ -16,8 +22,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     
     DDLogVerbose(@"Testing");
 }

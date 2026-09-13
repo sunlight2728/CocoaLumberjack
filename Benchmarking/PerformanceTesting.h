@@ -1,3 +1,10 @@
+//
+//  PerformanceTesting.h
+//  Benchmarking
+//
+//  CocoaLumberjack Benchmarking
+//
+
 #import <Foundation/Foundation.h>
 
 #define SPEED_TEST_0_COUNT 1000 // Total log statements

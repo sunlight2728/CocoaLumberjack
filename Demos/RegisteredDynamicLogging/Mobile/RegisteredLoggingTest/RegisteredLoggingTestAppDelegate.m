@@ -1,3 +1,10 @@
+//
+//  RegisteredLoggingTestAppDelegate.m
+//  RegisteredLoggingTest
+//
+//  CocoaLumberjack Demos
+//
+
 #import "RegisteredLoggingTestAppDelegate.h"
 #import "RegisteredLoggingTestViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
@@ -7,7 +14,6 @@
 // Log levels: off, error, warn, info, verbose
 static DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
-
 @implementation RegisteredLoggingTestAppDelegate
 
 @synthesize window = _window;
@@ -15,7 +21,7 @@ static DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     
     [Lions logStuff];
     [Tigers logStuff];

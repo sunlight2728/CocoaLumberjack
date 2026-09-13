@@ -1,3 +1,10 @@
+//
+//  CompressingLogFileManager.m
+//  LogFileCompressor
+//
+//  CocoaLumberjack Demos
+//
+
 #import "CompressingLogFileManager.h"
 #import <zlib.h>
 
@@ -139,31 +146,16 @@
     [self performSelector:@selector(compressNextLogFile) withObject:nil afterDelay:delay];
 }
 
-- (void)didArchiveLogFile:(NSString *)logFilePath
-{
-    NSLogVerbose(@"CompressingLogFileManager: didArchiveLogFile: %@", [logFilePath lastPathComponent]);
-    
-    // If all other log files have been compressed,
-    // then we can get started right away.
-    // Otherwise we should just wait for the current compression process to finish.
-    
-    if (upToDate)
-    {
-        [self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
-    }
-}
+- (void)didArchiveLogFile:(NSString *)logFilePath wasRolled:(BOOL)wasRolled {
+    NSLogVerbose(@"CompressingLogFileManager: didArchiveLogFile: %@ wasRolled: %@",
+                 [logFilePath lastPathComponent], (wasRolled ? @"YES" : @"NO"));
 
-- (void)didRollAndArchiveLogFile:(NSString *)logFilePath
-{
-    NSLogVerbose(@"CompressingLogFileManager: didRollAndArchiveLogFile: %@", [logFilePath lastPathComponent]);
-    
-    // If all other log files have been compressed,
-    // then we can get started right away.
+    // If all other log files have been compressed, then we can get started right away.
     // Otherwise we should just wait for the current compression process to finish.
-    
+
     if (upToDate)
     {
-        [self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
+        [self compressLogFile:[[DDLogFileInfo alloc] initWithFilePath:logFilePath]];
     }
 }
 
@@ -313,19 +305,19 @@
         // we fetch the totals before we ask it to compress data,
         // and then afterwards we subtract from the new totals.
         
-        NSInteger prevTotalIn = strm.total_in;
-        NSInteger prevTotalOut = strm.total_out;
+        NSUInteger prevTotalIn = strm.total_in;
+        NSUInteger prevTotalOut = strm.total_out;
         
         int flush = [inputStream hasBytesAvailable] ? Z_SYNC_FLUSH : Z_FINISH;
         deflate(&strm, flush);
         
-        NSInteger inputProcessed = strm.total_in - prevTotalIn;
-        NSInteger outputProcessed = strm.total_out - prevTotalOut;
+        NSUInteger inputProcessed = strm.total_in - prevTotalIn;
+        NSUInteger outputProcessed = strm.total_out - prevTotalOut;
         
         NSLogVerbose(@"CompressingLogFileManager: Total bytes uncompressed: %lu", (unsigned long)strm.total_in);
         NSLogVerbose(@"CompressingLogFileManager: Total bytes compressed: %lu", (unsigned long)strm.total_out);
         NSLogVerbose(@"CompressingLogFileManager: Compression ratio: %.1f%%",
-                     (1.0F - (float)(strm.total_out) / (float)(strm.total_in)) * 100);
+                     (double)(1.0F - (float)(strm.total_out) / (float)(strm.total_in)) * 100);
         
         // STEP 7
         // Now write all compressed bytes to our output stream.
@@ -434,7 +426,7 @@
         // considered a log file while it was only partially complete.
         // Only files that begin with "log-" are considered log files.
         
-        DDLogFileInfo *compressedLogFile = [DDLogFileInfo logFileWithPath:tempOutputFilePath];
+        DDLogFileInfo *compressedLogFile = [[DDLogFileInfo alloc] initWithFilePath:tempOutputFilePath];
         compressedLogFile.isArchived = YES;
         
         NSString *outputFileName = [logFile fileNameByAppendingPathExtension:@"gz"];
@@ -485,7 +477,6 @@
     
     return newFilePath;
 }
-
 
 - (NSString *)fileNameByAppendingPathExtension:(NSString *)newExt
 {

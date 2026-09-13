@@ -1,3 +1,10 @@
+//
+//  LogFileCompressorAppDelegate.m
+//  LogFileCompressor
+//
+//  CocoaLumberjack Demos
+//
+
 #import "LogFileCompressorAppDelegate.h"
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
@@ -5,7 +12,6 @@
 
 // Debug levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
@@ -26,8 +32,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     
     fileLogger.logFileManager.maximumNumberOfLogFiles = 4;
     
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     [DDLog addLogger:fileLogger];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0

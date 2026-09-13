@@ -1,3 +1,10 @@
+//
+//  CustomFormattersAppDelegate.m
+//  CustomFormatters
+//
+//  CocoaLumberjack Demos
+//
+
 #import "CustomFormattersAppDelegate.h"
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
@@ -6,9 +13,7 @@
 // Debug levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
-
 @implementation CustomFormattersAppDelegate
-
 @synthesize window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -17,11 +22,11 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     
     TestFormatter *formatter = [[TestFormatter alloc] init];
     
-    [[DDASLLogger sharedInstance] setLogFormatter:formatter];
+    [[DDOSLogger sharedInstance] setLogFormatter:formatter];
     [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
     
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     
     // Log some messages
     

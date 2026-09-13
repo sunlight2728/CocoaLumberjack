@@ -1,3 +1,10 @@
+//
+//  ContextFilterAppDelegate.m
+//  ContextFilter
+//
+//  CocoaLumberjack Demos
+//
+
 #import "ContextFilterAppDelegate.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "MyContextFilter.h"
@@ -6,9 +13,7 @@
 // Log levels: off, error, warn, info, verbose
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
-
 @implementation ContextFilterAppDelegate
-
 @synthesize window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -38,8 +43,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
     
     
     // We want all log messages (from our code or the third party framework) to show up in the Xcode console.
-    
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:(id<DDLogger>)[DDTTYLogger sharedInstance]];
     
     // If we want to filter log messages from the third party framework, we can do this:
     

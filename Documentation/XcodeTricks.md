@@ -4,11 +4,11 @@ Automatically use different log levels per xcode configuration.
 
 Starting with Xcode 4, the `DEBUG` preprocessor macro is automatically set when building for debug (as opposed to release). So you can use this to automatically get different log levels depending upon your current build configuration.
 
-```objective-c
+```objc
 #ifdef DEBUG
   static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
-  static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+  static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 #endif
 ```
 
@@ -20,11 +20,11 @@ Xcode has powerful configuration tools that we can tap into to automatically use
 
 When we're done we'll be able to have code like this:
 
-```objective-c
+```objc
 #ifdef CONFIGURATION_DEBUG
   static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
-  static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+  static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 #endif
 ```
 
